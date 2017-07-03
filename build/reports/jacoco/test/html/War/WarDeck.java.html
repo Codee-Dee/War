@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>WarDeck.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">War</a> &gt; <a href="index.source.html" class="el_package">War</a> &gt; <span class="el_source">WarDeck.java</span></div><h1>WarDeck.java</h1><pre class="source lang-java linenums">package War;
+
+import java.util.*;
+
+/*This class should set and shuffle the deck then split the deck into two. With player one getting a half and player two getting a half.*/
+//A = 1
+//J = 11
+//Q = 12
+//K = 13
+<span class="fc" id="L10">public class WarDeck{</span>
+	
+<span class="fc" id="L12">	private List &lt;Integer&gt; cardDeck = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L13">	private List &lt;Integer&gt; playerHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L14">	private List &lt;Integer&gt; enemyHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L15">	Random r = new Random();</span>
+	
+	
+	
+	private void setDeck(){
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		for (int i = 1; i &lt; 5; i ++){</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">			for (int j = 1; j &lt; 14; j++){</span>
+<span class="fc" id="L22">				cardDeck.add(j);</span>
+			}
+		}
+<span class="fc" id="L25">	}</span>
+	
+	public List&lt;Integer&gt; getDeck(){
+<span class="fc" id="L28">		setDeck();</span>
+<span class="fc" id="L29">		return cardDeck;</span>
+	}
+
+	private void dealPlayerHand(){
+<span class="fc" id="L33">		setDeck();</span>
+		int i;
+<span class="fc bfc" id="L35" title="All 2 branches covered.">		for(int j = 1; j &lt; 27;j++){</span>
+<span class="fc" id="L36">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L37">			playerHand.add(cardDeck.get(i));</span>
+		}
+<span class="fc" id="L39">	}</span>
+	
+	public List &lt;Integer&gt; getPlayerHand(){
+<span class="fc" id="L42">		dealPlayerHand();</span>
+<span class="fc" id="L43">		return playerHand;</span>
+	}
+	
+	private void dealEnemyHand(){
+<span class="fc" id="L47">		setDeck();</span>
+		int i;
+<span class="fc bfc" id="L49" title="All 2 branches covered.">		for(int j = 1; j &lt; 27; j++){</span>
+<span class="fc" id="L50">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L51">			enemyHand.add(cardDeck.get(i));</span>
+		}
+<span class="fc" id="L53">	}</span>
+	
+	public List &lt;Integer&gt; getEnemyHand(){
+<span class="fc" id="L56">		dealEnemyHand();</span>
+<span class="fc" id="L57">		return enemyHand;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
