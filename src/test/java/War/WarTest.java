@@ -68,6 +68,4 @@ public class WarTest{
 			assertEquals("This test does not work.", "This test does not work.");
 		}
 	}
-	
-	
 }
