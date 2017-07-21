@@ -2,55 +2,99 @@
 
 /*This class should handle the actual game play of war*/
 
-<span class="fc" id="L5">public class War{</span>
+import java.util.*;
+<span class="fc" id="L6">public class War{</span>
 	
-<span class="fc" id="L7">	private WarDeck wd = new WarDeck();</span>
 <span class="fc" id="L8">	private boolean stillPlaying = true;</span>
+<span class="fc" id="L9">	private List &lt;Integer&gt; cardDeck = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L10">	public List &lt;Integer&gt; playerHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L11">	public List &lt;Integer&gt; enemyHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L12">	Random r = new Random();</span>
+	
+	
+	
+	public void setDeck(){
+<span class="fc bfc" id="L17" title="All 2 branches covered.">		for (int i = 1; i &lt; 5; i ++){</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">			for (int j = 1; j &lt; 14; j++){</span>
+<span class="fc" id="L19">				cardDeck.add(j);</span>
+			}
+		}
+<span class="fc" id="L22">	}</span>
+	
+	public List&lt;Integer&gt; getDeck(){
+<span class="fc" id="L25">		setDeck();</span>
+<span class="fc" id="L26">		return cardDeck;</span>
+	}
+
+	public void dealPlayerHand(){
+<span class="fc" id="L30">		setDeck();</span>
+		int i;
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		for(int j = 1; j &lt; 27;j++){</span>
+<span class="fc" id="L33">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L34">			playerHand.add(cardDeck.get(i));</span>
+		}
+<span class="fc" id="L36">	}</span>
+	
+	
+	public void dealEnemyHand(){
+<span class="fc" id="L40">		setDeck();</span>
+		int i;
+<span class="fc bfc" id="L42" title="All 2 branches covered.">		for(int j = 1; j &lt; 27; j++){</span>
+<span class="fc" id="L43">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L44">			enemyHand.add(cardDeck.get(i));</span>
+		}
+<span class="fc" id="L46">	}</span>
 	
 	
 	public int drawFromPlayerHand(){
-<span class="fc" id="L12">		return wd.getPlayerHand().get(0);</span>
+<span class="fc" id="L50">		return playerHand.get(0);</span>
 	}
 	
 	public int drawFromEnemyHand(){
-<span class="fc" id="L16">		return wd.getEnemyHand().get(0);</span>
+<span class="fc" id="L54">		return enemyHand.get(0);</span>
 	}
 	
 	public void compareHands(){
-<span class="fc bfc" id="L20" title="All 2 branches covered.">		if (drawFromPlayerHand() &gt; drawFromEnemyHand()){</span>
-<span class="fc" id="L21">			wd.getPlayerHand().add(drawFromEnemyHand());</span>
-<span class="fc" id="L22">			wd.getEnemyHand().remove(drawFromEnemyHand());</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		if (playerHand.get(0) &gt; enemyHand.get(0)){</span>
+<span class="fc" id="L59">			playerHand.add(enemyHand.get(0));</span>
+<span class="fc" id="L60">			enemyHand.remove(enemyHand.get(0));</span>
+		}
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		else if (enemyHand.get(0) &lt; playerHand.get(0)){</span>
+<span class="nc" id="L63">			enemyHand.add(playerHand.get(0));</span>
+<span class="nc" id="L64">			playerHand.remove(enemyHand.get(0));</span>
+			
 		}
 		else{
-<span class="fc" id="L25">			wd.getEnemyHand().add(drawFromPlayerHand());</span>
-<span class="fc" id="L26">			wd.getPlayerHand().remove(drawFromPlayerHand());</span>
+<span class="fc" id="L68">			enemyHand.remove(enemyHand.get(0));</span>
+<span class="fc" id="L69">			playerHand.remove(playerHand.get(0));</span>
 		}
 		
-<span class="fc" id="L29">	}</span>
+<span class="fc" id="L72">	}</span>
 	
+	/*
 	public String getWinner(){
-<span class="nc" id="L32">		String winner = &quot;&quot;;</span>
+		String winner = &quot;&quot;;
 		
-<span class="nc bnc" id="L34" title="All 2 branches missed.">		while(stillPlaying == true){</span>
-<span class="nc" id="L35">			compareHands();</span>
-<span class="nc bnc" id="L36" title="All 2 branches missed.">			if (wd.getEnemyHand().size() == 0){</span>
-<span class="nc" id="L37">				winner = &quot;Player Wins!&quot;;</span>
-<span class="nc" id="L38">				stillPlaying = false;</span>
-<span class="nc" id="L39">				return winner;</span>
+		while(stillPlaying == true){
+			compareHands();
+			if (wd.getEnemyHand().size() == 0){
+				winner = &quot;Player Wins!&quot;;
+				stillPlaying = false;
+				return winner;
 			}
-<span class="nc bnc" id="L41" title="All 2 branches missed.">			else if (wd.getPlayerHand().size() == 0){</span>
-<span class="nc" id="L42">				winner = &quot;Computer Wins!&quot;;</span>
-<span class="nc" id="L43">				stillPlaying = false;</span>
-<span class="nc" id="L44">				return winner;</span>
+			else if (wd.getPlayerHand().size() == 0){
+				winner = &quot;Computer Wins!&quot;;
+				stillPlaying = false;
+				return winner;
 			}
 			else{
-<span class="nc" id="L47">				stillPlaying = true;</span>
+				stillPlaying = true;
 			}
 		}
 			
-<span class="nc" id="L51">			return winner;</span>
+			return winner;
 	}
-	
+	*/
 	
 		
 }

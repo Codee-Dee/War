@@ -2,32 +2,76 @@ package War;
 
 /*This class should handle the actual game play of war*/
 
+import java.util.*;
 public class War{
 	
-	private WarDeck wd = new WarDeck();
 	private boolean stillPlaying = true;
+	private List <Integer> cardDeck = new ArrayList<>();
+	public List <Integer> playerHand = new ArrayList<>();
+	public List <Integer> enemyHand = new ArrayList<>();
+	Random r = new Random();
+	
+	
+	
+	public void setDeck(){
+		for (int i = 1; i < 5; i ++){
+			for (int j = 1; j < 14; j++){
+				cardDeck.add(j);
+			}
+		}
+	}
+	
+	public List<Integer> getDeck(){
+		setDeck();
+		return cardDeck;
+	}
+
+	public void dealPlayerHand(){
+		setDeck();
+		int i;
+		for(int j = 1; j < 27;j++){
+			i = r.nextInt(cardDeck.size());
+			playerHand.add(cardDeck.get(i));
+		}
+	}
+	
+	
+	public void dealEnemyHand(){
+		setDeck();
+		int i;
+		for(int j = 1; j < 27; j++){
+			i = r.nextInt(cardDeck.size());
+			enemyHand.add(cardDeck.get(i));
+		}
+	}
 	
 	
 	public int drawFromPlayerHand(){
-		return wd.getPlayerHand().get(0);
+		return playerHand.get(0);
 	}
 	
 	public int drawFromEnemyHand(){
-		return wd.getEnemyHand().get(0);
+		return enemyHand.get(0);
 	}
 	
 	public void compareHands(){
-		if (drawFromPlayerHand() > drawFromEnemyHand()){
-			wd.getPlayerHand().add(drawFromEnemyHand());
-			wd.getEnemyHand().remove(drawFromEnemyHand());
+		if (playerHand.get(0) > enemyHand.get(0)){
+			playerHand.add(enemyHand.get(0));
+			enemyHand.remove(enemyHand.get(0));
+		}
+		else if (enemyHand.get(0) < playerHand.get(0)){
+			enemyHand.add(playerHand.get(0));
+			playerHand.remove(enemyHand.get(0));
+			
 		}
 		else{
-			wd.getEnemyHand().add(drawFromPlayerHand());
-			wd.getPlayerHand().remove(drawFromPlayerHand());
+			enemyHand.remove(enemyHand.get(0));
+			playerHand.remove(playerHand.get(0));
 		}
 		
 	}
 	
+	/*
 	public String getWinner(){
 		String winner = "";
 		
@@ -50,7 +94,7 @@ public class War{
 			
 			return winner;
 	}
-	
+	*/
 	
 		
 }

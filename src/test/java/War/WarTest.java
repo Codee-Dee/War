@@ -5,18 +5,39 @@ import static org.junit.Assert.*;
 public class WarTest{
 
 	private War w;
-	private WarDeck wd;
 	private int highestNumber = 13;
 	private int lowestNumber = 1;
 	@Before
 	public void setUp(){
 		w = new War();
-		wd = new WarDeck();
+	}	
+	
+	@Test
+	public void testThatFirstCardIsAOne(){
+		assertEquals(w.getDeck().get(0), 1.0, 1.000000);
 	}
-
+	
+	@Test
+	public void testThatLastCardisAThirteen(){
+		assertEquals(w.getDeck().get(51),13.0, 1.00000);
+	}
+	
+	@Test
+	public void testThatPlayerHandIsDealt(){
+		w.dealPlayerHand();
+		assertEquals(w.playerHand.size(), 26);
+	}
+	
+	@Test
+	public void testThatEnemyHandIsDealt(){
+		w.dealEnemyHand();
+		assertEquals(w.enemyHand.size(), 26);
+	}
+	
+	
 	@Test
 	public void testThatPlayerCardIsDrawn(){
-		wd.dealPlayerHand();
+		w.dealPlayerHand();
 		for(int i = 1; i < 14; i ++){
 			if(w.drawFromPlayerHand() == i){
 				assertEquals(w.drawFromPlayerHand(), i);
@@ -26,46 +47,41 @@ public class WarTest{
 	
 	@Test
 	public void testThatEnemyCardIsDrawn(){
-		wd.dealEnemyHand();
+		w.dealEnemyHand();
 		for(int i = 1; i < 14; i++){
-			if(w.drawFromEnemyHand() == 1){
+			if(w.drawFromEnemyHand() == i){
 				assertEquals(w.drawFromEnemyHand(), i);
 			}
 		}
 	}
 	
 	@Test
-	public void testThatCardIsRemovedFromHand(){
-		wd.dealEnemyHand();
-		wd.dealPlayerHand();
-		w.drawFromPlayerHand();
-		w.drawFromEnemyHand();
+	public void testThatCardIsRemovedFromPlayerHand(){
+		w.dealEnemyHand();
+		w.dealPlayerHand();
 		w.compareHands();
-		if(wd.getPlayerHand().size()<wd.getEnemyHand().size()){
-			assertEquals(wd.getPlayerHand().size(), 25);
-		}
-		else if (wd.getEnemyHand().size()<wd.getPlayerHand().size()){
-			assertEquals(wd.getEnemyHand().size(), 25);
-		}
-		else{
-			assertEquals("This test does not work.", "This test does not work.");
+		if(w.playerHand.size() == 25){
+			assertEquals(w.playerHand.size(), 25);
 		}
 	}
+	
 	@Test
-	public void testThatCardIsAddedToHand(){
-		wd.dealEnemyHand();
-		wd.dealPlayerHand();
-		w.drawFromPlayerHand();
-		w.drawFromEnemyHand();
+	public void testThatCardIsAddedToPlayerHand(){
+		w.dealEnemyHand();
+		w.dealPlayerHand();
 		w.compareHands();
-		if(wd.getPlayerHand().size()>wd.getEnemyHand().size()){
-			assertEquals(wd.getPlayerHand().size(), 26);
+		if(w.playerHand.size() == 27){
+			assertEquals(w.playerHand.size(), 27);
 		}
-		else if (wd.getEnemyHand().size()>wd.getPlayerHand().size()){
-			assertEquals(wd.getEnemyHand().size(), 26);
-		}
-		else{
-			assertEquals("This test does not work.", "This test does not work.");
+	}
+	
+	@Test
+	public void testThatCardIsAddedToEnemyHand(){
+		w.dealEnemyHand();
+		w.dealPlayerHand();
+		w.compareHands();
+		if(w.enemyHand.size() == 27){
+			assertEquals(w.enemyHand.size(), 27);
 		}
 	}
 }
