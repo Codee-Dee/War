@@ -6,21 +6,32 @@ public class WarTest{
 
 	private War w;
 	private WarDeck wd;
+	private int highestNumber = 13;
+	private int lowestNumber = 1;
 	@Before
 	public void setUp(){
 		w = new War();
 		wd = new WarDeck();
 	}
 
-	/*@Test
+	@Test
 	public void testThatPlayerCardIsDrawn(){
-		assertEquals(w.drawFromPlayerHand(), 1);
-	}*/
+		wd.dealPlayerHand();
+		for(int i = 1; i < 14; i ++){
+			if(w.drawFromPlayerHand() == i){
+				assertEquals(w.drawFromPlayerHand(), i);
+			}
+		}
+	}
 	
 	@Test
 	public void testThatEnemyCardIsDrawn(){
 		wd.dealEnemyHand();
-		assertEquals(w.drawFromEnemyHand(), 1);
+		for(int i = 1; i < 14; i++){
+			if(w.drawFromEnemyHand() == 1){
+				assertEquals(w.drawFromEnemyHand(), i);
+			}
+		}
 	}
 	
 	/*@Test

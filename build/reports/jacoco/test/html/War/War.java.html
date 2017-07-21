@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>War.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">War</a> &gt; <a href="index.source.html" class="el_package">War</a> &gt; <span class="el_source">War.java</span></div><h1>War.java</h1><pre class="source lang-java linenums">package War;
+
+/*This class should handle the actual game play of war*/
+
+<span class="fc" id="L5">public class War{</span>
+	
+<span class="fc" id="L7">	private WarDeck wd = new WarDeck();</span>
+<span class="fc" id="L8">	private boolean stillPlaying = true;</span>
+	
+	
+	public int drawFromPlayerHand(){
+<span class="fc" id="L12">		return wd.getPlayerHand().get(0);</span>
+	}
+	
+	public int drawFromEnemyHand(){
+<span class="fc" id="L16">		return wd.getEnemyHand().get(0);</span>
+	}
+	
+	public void compareHands(){
+<span class="nc bnc" id="L20" title="All 2 branches missed.">		if (drawFromPlayerHand() &gt; drawFromEnemyHand()){</span>
+<span class="nc" id="L21">			wd.getPlayerHand().add(drawFromEnemyHand());</span>
+<span class="nc" id="L22">			wd.getEnemyHand().remove(drawFromEnemyHand());</span>
+		}
+		else{
+<span class="nc" id="L25">			wd.getEnemyHand().add(drawFromPlayerHand());</span>
+<span class="nc" id="L26">			wd.getPlayerHand().remove(drawFromPlayerHand());</span>
+		}
+		
+<span class="nc" id="L29">	}</span>
+	
+	public String getWinner(){
+<span class="nc" id="L32">		String winner = &quot;&quot;;</span>
+		
+<span class="nc bnc" id="L34" title="All 2 branches missed.">		while(stillPlaying == true){</span>
+<span class="nc" id="L35">			compareHands();</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">			if (wd.getEnemyHand().size() == 0){</span>
+<span class="nc" id="L37">				winner = &quot;Player Wins!&quot;;</span>
+<span class="nc" id="L38">				stillPlaying = false;</span>
+<span class="nc" id="L39">				return winner;</span>
+			}
+<span class="nc bnc" id="L41" title="All 2 branches missed.">			else if (wd.getPlayerHand().size() == 0){</span>
+<span class="nc" id="L42">				winner = &quot;Computer Wins!&quot;;</span>
+<span class="nc" id="L43">				stillPlaying = false;</span>
+<span class="nc" id="L44">				return winner;</span>
+			}
+			else{
+<span class="nc" id="L47">				stillPlaying = true;</span>
+			}
+		}
+			
+<span class="nc" id="L51">			return winner;</span>
+	}
+	
+	
+		
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.1.201405082137</span></div></body></html>
