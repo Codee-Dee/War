@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="War.WarTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-07-03T06:38:56" hostname="Cody-PC" time="0.003">
+<testsuite name="War.WarTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2017-07-21T00:40:39" hostname="Cody-PC" time="0.003">
   <properties/>
-  <testcase name="testThatFirstCardIsDrawn" classname="War.WarTest" time="0.003">
-    <failure message="java.lang.AssertionError: expected:&lt;6&gt; but was:&lt;1&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;6&gt; but was:&lt;1&gt;
+  <testcase name="testThatEnemyCardIsDrawn" classname="War.WarTest" time="0.003">
+    <failure message="java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;1&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;4&gt; but was:&lt;1&gt;
 	at org.junit.Assert.fail(Assert.java:88)
 	at org.junit.Assert.failNotEquals(Assert.java:834)
 	at org.junit.Assert.assertEquals(Assert.java:645)
 	at org.junit.Assert.assertEquals(Assert.java:631)
-	at War.WarTest.testThatFirstCardIsDrawn(WarTest.java:15)
+	at War.WarTest.testThatEnemyCardIsDrawn(WarTest.java:23)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

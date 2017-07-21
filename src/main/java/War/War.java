@@ -12,12 +12,19 @@ public class War{
 		return wd.getPlayerHand().get(0);
 	}
 	
-	public int drawFromDealerHand(){
+	public int drawFromEnemyHand(){
 		return wd.getEnemyHand().get(0);
 	}
 	
 	public void compareHands(){
-		
+		if (drawFromPlayerHand() > drawFromEnemyHand()){
+			wd.getPlayerHand().add(drawFromEnemyHand());
+			wd.getEnemyHand().remove(drawFromEnemyHand());
+		}
+		else{
+			wd.getEnemyHand().add(drawFromPlayerHand());
+			wd.getPlayerHand().remove(drawFromPlayerHand());
+		}
 		
 	}
 	
@@ -25,6 +32,7 @@ public class War{
 		String winner = "";
 		
 		while(stillPlaying == true){
+			compareHands();
 			if (wd.getEnemyHand().size() == 0){
 				winner = "Player Wins!";
 				stillPlaying = false;

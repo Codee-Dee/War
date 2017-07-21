@@ -12,8 +12,6 @@ public class WarDeckTest{
 		wd = new WarDeck();
 	}
 	
-	private int[] testDeck = new int [51];
-	
 	@Test
 	public void testThatFirstCardIsAOne(){
 		assertEquals(wd.getDeck().get(0), 1.0, 1.000000);

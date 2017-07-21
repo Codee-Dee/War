@@ -16,7 +16,7 @@ public class WarDeck{
 	
 	
 	
-	private void setDeck(){
+	public void setDeck(){
 		for (int i = 1; i < 5; i ++){
 			for (int j = 1; j < 14; j++){
 				cardDeck.add(j);
@@ -29,7 +29,7 @@ public class WarDeck{
 		return cardDeck;
 	}
 
-	private void dealPlayerHand(){
+	public void dealPlayerHand(){
 		setDeck();
 		int i;
 		for(int j = 1; j < 27;j++){
@@ -43,7 +43,7 @@ public class WarDeck{
 		return playerHand;
 	}
 	
-	private void dealEnemyHand(){
+	public void dealEnemyHand(){
 		setDeck();
 		int i;
 		for(int j = 1; j < 27; j++){
