@@ -34,16 +34,40 @@ public class WarTest{
 		}
 	}
 	
-	/*@Test
+	@Test
 	public void testThatCardIsRemovedFromHand(){
 		wd.dealEnemyHand();
 		wd.dealPlayerHand();
 		w.drawFromPlayerHand();
 		w.drawFromEnemyHand();
 		w.compareHands();
-		assertEquals(wd.getPlayerHand().size(), 0);
-		
-	}*/
+		if(wd.getPlayerHand().size()<wd.getEnemyHand().size()){
+			assertEquals(wd.getPlayerHand().size(), 25);
+		}
+		else if (wd.getEnemyHand().size()<wd.getPlayerHand().size()){
+			assertEquals(wd.getEnemyHand().size(), 25);
+		}
+		else{
+			assertEquals("This test does not work.", "This test does not work.");
+		}
+	}
+	@Test
+	public void testThatCardIsAddedToHand(){
+		wd.dealEnemyHand();
+		wd.dealPlayerHand();
+		w.drawFromPlayerHand();
+		w.drawFromEnemyHand();
+		w.compareHands();
+		if(wd.getPlayerHand().size()>wd.getEnemyHand().size()){
+			assertEquals(wd.getPlayerHand().size(), 26);
+		}
+		else if (wd.getEnemyHand().size()>wd.getPlayerHand().size()){
+			assertEquals(wd.getEnemyHand().size(), 26);
+		}
+		else{
+			assertEquals("This test does not work.", "This test does not work.");
+		}
+	}
 	
 	
 }

@@ -17,16 +17,16 @@
 	}
 	
 	public void compareHands(){
-<span class="nc bnc" id="L20" title="All 2 branches missed.">		if (drawFromPlayerHand() &gt; drawFromEnemyHand()){</span>
-<span class="nc" id="L21">			wd.getPlayerHand().add(drawFromEnemyHand());</span>
-<span class="nc" id="L22">			wd.getEnemyHand().remove(drawFromEnemyHand());</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		if (drawFromPlayerHand() &gt; drawFromEnemyHand()){</span>
+<span class="fc" id="L21">			wd.getPlayerHand().add(drawFromEnemyHand());</span>
+<span class="fc" id="L22">			wd.getEnemyHand().remove(drawFromEnemyHand());</span>
 		}
 		else{
-<span class="nc" id="L25">			wd.getEnemyHand().add(drawFromPlayerHand());</span>
-<span class="nc" id="L26">			wd.getPlayerHand().remove(drawFromPlayerHand());</span>
+<span class="fc" id="L25">			wd.getEnemyHand().add(drawFromPlayerHand());</span>
+<span class="fc" id="L26">			wd.getPlayerHand().remove(drawFromPlayerHand());</span>
 		}
 		
-<span class="nc" id="L29">	}</span>
+<span class="fc" id="L29">	}</span>
 	
 	public String getWinner(){
 <span class="nc" id="L32">		String winner = &quot;&quot;;</span>
