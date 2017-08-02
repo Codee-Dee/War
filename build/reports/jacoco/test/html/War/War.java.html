@@ -5,96 +5,88 @@
 import java.util.*;
 <span class="fc" id="L6">public class War{</span>
 	
-<span class="fc" id="L8">	private boolean stillPlaying = true;</span>
-<span class="fc" id="L9">	private List &lt;Integer&gt; cardDeck = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L10">	public List &lt;Integer&gt; playerHand = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L11">	public List &lt;Integer&gt; enemyHand = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L12">	Random r = new Random();</span>
+<span class="fc" id="L8">	private List &lt;Integer&gt; cardDeck = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L9">	public List &lt;Integer&gt; playerHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L10">	public List &lt;Integer&gt; enemyHand = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L11">	Random r = new Random();</span>
 	
 	
 	
 	public void setDeck(){
-<span class="fc bfc" id="L17" title="All 2 branches covered.">		for (int i = 1; i &lt; 5; i ++){</span>
-<span class="fc bfc" id="L18" title="All 2 branches covered.">			for (int j = 1; j &lt; 14; j++){</span>
-<span class="fc" id="L19">				cardDeck.add(j);</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">		for (int i = 1; i &lt; 5; i ++){</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">			for (int j = 1; j &lt; 14; j++){</span>
+<span class="fc" id="L18">				cardDeck.add(j);</span>
 			}
 		}
-<span class="fc" id="L22">	}</span>
+<span class="fc" id="L21">	}</span>
 	
 	public List&lt;Integer&gt; getDeck(){
-<span class="fc" id="L25">		setDeck();</span>
-<span class="fc" id="L26">		return cardDeck;</span>
+<span class="fc" id="L24">		setDeck();</span>
+<span class="fc" id="L25">		return cardDeck;</span>
 	}
 
 	public void dealPlayerHand(){
-<span class="fc" id="L30">		setDeck();</span>
+<span class="fc" id="L29">		setDeck();</span>
 		int i;
-<span class="fc bfc" id="L32" title="All 2 branches covered.">		for(int j = 1; j &lt; 27;j++){</span>
-<span class="fc" id="L33">			i = r.nextInt(cardDeck.size());</span>
-<span class="fc" id="L34">			playerHand.add(cardDeck.get(i));</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">		for(int j = 1; j &lt; 27;j++){</span>
+<span class="fc" id="L32">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L33">			playerHand.add(cardDeck.get(i));</span>
 		}
-<span class="fc" id="L36">	}</span>
+<span class="fc" id="L35">	}</span>
 	
 	
 	public void dealEnemyHand(){
-<span class="fc" id="L40">		setDeck();</span>
+<span class="fc" id="L39">		setDeck();</span>
 		int i;
-<span class="fc bfc" id="L42" title="All 2 branches covered.">		for(int j = 1; j &lt; 27; j++){</span>
-<span class="fc" id="L43">			i = r.nextInt(cardDeck.size());</span>
-<span class="fc" id="L44">			enemyHand.add(cardDeck.get(i));</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">		for(int j = 1; j &lt; 27; j++){</span>
+<span class="fc" id="L42">			i = r.nextInt(cardDeck.size());</span>
+<span class="fc" id="L43">			enemyHand.add(cardDeck.get(i));</span>
 		}
-<span class="fc" id="L46">	}</span>
+<span class="fc" id="L45">	}</span>
 	
 	
 	public int drawFromPlayerHand(){
-<span class="fc" id="L50">		return playerHand.get(0);</span>
+<span class="fc" id="L49">		return playerHand.get(0);</span>
 	}
 	
 	public int drawFromEnemyHand(){
-<span class="fc" id="L54">		return enemyHand.get(0);</span>
+<span class="fc" id="L53">		return enemyHand.get(0);</span>
 	}
 	
 	public void compareHands(){
-<span class="fc bfc" id="L58" title="All 2 branches covered.">		if (playerHand.get(0) &gt; enemyHand.get(0)){</span>
-<span class="fc" id="L59">			playerHand.add(enemyHand.get(0));</span>
-<span class="fc" id="L60">			enemyHand.remove(enemyHand.get(0));</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">		if (playerHand.get(0) &gt; enemyHand.get(0)){</span>
+<span class="fc" id="L58">			playerHand.add(enemyHand.get(0));</span>
+<span class="fc" id="L59">			enemyHand.remove(enemyHand.get(0));</span>
 		}
-<span class="pc bpc" id="L62" title="1 of 2 branches missed.">		else if (enemyHand.get(0) &lt; playerHand.get(0)){</span>
-<span class="nc" id="L63">			enemyHand.add(playerHand.get(0));</span>
-<span class="nc" id="L64">			playerHand.remove(enemyHand.get(0));</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">		else if (enemyHand.get(0) &gt; playerHand.get(0)){</span>
+<span class="fc" id="L62">			enemyHand.add(playerHand.get(0));</span>
+<span class="fc" id="L63">			playerHand.remove(enemyHand.get(0));</span>
 			
 		}
 		else{
-<span class="fc" id="L68">			enemyHand.remove(enemyHand.get(0));</span>
-<span class="fc" id="L69">			playerHand.remove(playerHand.get(0));</span>
+<span class="fc" id="L67">			enemyHand.remove(enemyHand.get(0));</span>
+<span class="fc" id="L68">			playerHand.remove(playerHand.get(0));</span>
 		}
 		
-<span class="fc" id="L72">	}</span>
+<span class="fc" id="L71">	}</span>
 	
-	/*
+	
 	public String getWinner(){
-		String winner = &quot;&quot;;
-		
-		while(stillPlaying == true){
-			compareHands();
-			if (wd.getEnemyHand().size() == 0){
-				winner = &quot;Player Wins!&quot;;
-				stillPlaying = false;
-				return winner;
-			}
-			else if (wd.getPlayerHand().size() == 0){
-				winner = &quot;Computer Wins!&quot;;
-				stillPlaying = false;
-				return winner;
-			}
-			else{
-				stillPlaying = true;
-			}
+<span class="nc" id="L75">		String winner = &quot;&quot;;</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (enemyHand.size() == 0){</span>
+<span class="nc" id="L77">			winner = &quot;Player Wins!&quot;;</span>
+<span class="nc" id="L78">			return winner;</span>
 		}
-			
-			return winner;
+<span class="nc bnc" id="L80" title="All 2 branches missed.">		else if (playerHand.size() == 0){</span>
+<span class="nc" id="L81">			winner = &quot;Computer Wins!&quot;;</span>
+<span class="nc" id="L82">			return winner;</span>
+		}
+		else{
+<span class="nc" id="L85">			winner = &quot;Still going!&quot;;</span>
+<span class="nc" id="L86">			return winner;</span>
+		}
 	}
-	*/
+	
 	
 		
 }

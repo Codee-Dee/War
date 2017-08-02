@@ -56,32 +56,40 @@ public class WarTest{
 	}
 	
 	@Test
-	public void testThatCardIsRemovedFromPlayerHand(){
+	public void testThatHandsAreCompared(){
 		w.dealEnemyHand();
 		w.dealPlayerHand();
 		w.compareHands();
-		if(w.playerHand.size() == 25){
-			assertEquals(w.playerHand.size(), 25);
+		for (int i = 0; i < 27;i++){
+			if(w.playerHand.size() == i){
+				assertEquals(w.playerHand.size(), i);
+			}
 		}
 	}
 	
 	@Test
-	public void testThatCardIsAddedToPlayerHand(){
+	public void testForWinner(){
+		boolean stillPlaying = true;
+		String winner = "";
 		w.dealEnemyHand();
 		w.dealPlayerHand();
-		w.compareHands();
-		if(w.playerHand.size() == 27){
-			assertEquals(w.playerHand.size(), 27);
+		while(stillPlaying == true){
+			w.compareHands();
+			if (w.enemyHand.size() == 0){
+                //winner = "Player Wins!";
+                stillPlaying = false;
+				assertEquals("Player Wins!", w.getWinner());
+            }
+            else if (w.playerHand.size() == 0){
+                //winner = w.getWinner();
+                stillPlaying = false;
+				assertEquals("Computer Wins!", w.getWinner());
+            }
+            else{
+                stillPlaying = true;
+            }
+			
 		}
 	}
 	
-	@Test
-	public void testThatCardIsAddedToEnemyHand(){
-		w.dealEnemyHand();
-		w.dealPlayerHand();
-		w.compareHands();
-		if(w.enemyHand.size() == 27){
-			assertEquals(w.enemyHand.size(), 27);
-		}
-	}
 }

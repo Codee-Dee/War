@@ -5,7 +5,6 @@ package War;
 import java.util.*;
 public class War{
 	
-	private boolean stillPlaying = true;
 	private List <Integer> cardDeck = new ArrayList<>();
 	public List <Integer> playerHand = new ArrayList<>();
 	public List <Integer> enemyHand = new ArrayList<>();
@@ -59,7 +58,7 @@ public class War{
 			playerHand.add(enemyHand.get(0));
 			enemyHand.remove(enemyHand.get(0));
 		}
-		else if (enemyHand.get(0) < playerHand.get(0)){
+		else if (enemyHand.get(0) > playerHand.get(0)){
 			enemyHand.add(playerHand.get(0));
 			playerHand.remove(enemyHand.get(0));
 			
@@ -71,30 +70,23 @@ public class War{
 		
 	}
 	
-	/*
+	
 	public String getWinner(){
 		String winner = "";
-		
-		while(stillPlaying == true){
-			compareHands();
-			if (wd.getEnemyHand().size() == 0){
-				winner = "Player Wins!";
-				stillPlaying = false;
-				return winner;
-			}
-			else if (wd.getPlayerHand().size() == 0){
-				winner = "Computer Wins!";
-				stillPlaying = false;
-				return winner;
-			}
-			else{
-				stillPlaying = true;
-			}
-		}
-			
+		if (enemyHand.size() == 0){
+			winner = "Player Wins!";
 			return winner;
+		}
+		else if (playerHand.size() == 0){
+			winner = "Computer Wins!";
+			return winner;
+		}
+		else{
+			winner = "Still going!";
+			return winner;
+		}
 	}
-	*/
+	
 	
 		
 }
