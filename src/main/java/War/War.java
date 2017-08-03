@@ -86,7 +86,5 @@ public class War{
 			return winner;
 		}
 	}
-	
-	
 		
 }

@@ -60,7 +60,7 @@ public class WarTest{
 		w.dealEnemyHand();
 		w.dealPlayerHand();
 		w.compareHands();
-		for (int i = 0; i < 27;i++){
+		for (int i = 25; i < 27;i++){
 			if(w.playerHand.size() == i){
 				assertEquals(w.playerHand.size(), i);
 			}
@@ -68,27 +68,28 @@ public class WarTest{
 	}
 	
 	@Test
-	public void testForWinner(){
+	public void testForStillGoing(){
 		boolean stillPlaying = true;
 		String winner = "";
 		w.dealEnemyHand();
 		w.dealPlayerHand();
-		while(stillPlaying == true){
-			w.compareHands();
-			if (w.enemyHand.size() == 0){
-                //winner = "Player Wins!";
-                stillPlaying = false;
-				assertEquals("Player Wins!", w.getWinner());
-            }
-            else if (w.playerHand.size() == 0){
-                //winner = w.getWinner();
-                stillPlaying = false;
-				assertEquals("Computer Wins!", w.getWinner());
-            }
-            else{
-                stillPlaying = true;
-            }
-			
+		w.getWinner();
+        assertEquals("Still going!", w.getWinner());
+            	
+	}
+	
+	@Test
+	public void testForPlayerWin(){
+		w.dealPlayerHand();
+		if (w.enemyHand.size() == 0){
+			assertEquals("Player Wins!", w.getWinner());
+		}
+	}
+	@Test
+	public void testForEnemyWin(){
+		w.dealEnemyHand();
+		if(w.playerHand.size() == 0){
+			assertEquals("Computer Wins!", w.getWinner());
 		}
 	}
 	
