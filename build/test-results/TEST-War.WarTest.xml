@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="War.WarTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2017-08-03T01:15:06" hostname="Cody-PC" time="0.004">
+<testsuite name="War.WarTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2017-08-04T02:39:42" hostname="Cody-PC" time="0.005">
   <properties/>
   <testcase name="testThatPlayerCardIsDrawn" classname="War.WarTest" time="0.002"/>
-  <testcase name="testForEnemyWin" classname="War.WarTest" time="0.0"/>
+  <testcase name="testForEnemyWin" classname="War.WarTest" time="0.001"/>
   <testcase name="testForPlayerWin" classname="War.WarTest" time="0.0"/>
-  <testcase name="testThatHandsAreCompared2" classname="War.WarTest" time="0.0"/>
   <testcase name="testThatEnemyCardIsDrawn" classname="War.WarTest" time="0.0"/>
   <testcase name="testThatLastCardisAThirteen" classname="War.WarTest" time="0.0"/>
-  <testcase name="testThatPlayerHandIsDealt" classname="War.WarTest" time="0.0"/>
+  <testcase name="testThatPlayerHandIsDealt" classname="War.WarTest" time="0.001"/>
   <testcase name="testForStillGoing" classname="War.WarTest" time="0.0"/>
   <testcase name="testThatHandsAreCompared" classname="War.WarTest" time="0.0"/>
-  <testcase name="testThatFirstCardIsAOne" classname="War.WarTest" time="0.0"/>
-  <testcase name="testThatEnemyHandIsDealt" classname="War.WarTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testThatFirstCardIsAOne" classname="War.WarTest" time="0.001"/>
+  <testcase name="testThatEnemyHandIsDealt" classname="War.WarTest" time="0.0"/>
+  <system-out><![CDATA[Player wins this round!
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

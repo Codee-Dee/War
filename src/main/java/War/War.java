@@ -1,4 +1,4 @@
-package War;
+//package War;
 
 /*This class should handle the actual game play of war*/
 
@@ -57,15 +57,18 @@ public class War{
 		if (playerHand.get(0) > enemyHand.get(0)){
 			playerHand.add(enemyHand.get(0));
 			enemyHand.remove(enemyHand.get(0));
+			System.out.println("Player wins this round!");
 		}
 		else if (enemyHand.get(0) > playerHand.get(0)){
 			enemyHand.add(playerHand.get(0));
 			playerHand.remove(enemyHand.get(0));
+			System.out.println("Computer wins this round!");
 			
 		}
 		else{
 			enemyHand.remove(enemyHand.get(0));
 			playerHand.remove(playerHand.get(0));
+			System.out.println("tie");
 		}
 		
 	}
@@ -85,6 +88,48 @@ public class War{
 			winner = "Still going!";
 			return winner;
 		}
+	}
+	
+	public static void main (String[] args){
+		War w = new War();
+		w.dealEnemyHand();
+		w.dealPlayerHand();
+		int maxTurns = 52;
+		for(int i = 0; i < maxTurns; i++){
+			if (i == 1){
+				System.out.println(w.drawFromPlayerHand());
+				System.out.println(w.drawFromEnemyHand());
+				w.compareHands();
+				System.out.println("The player has "  + w.playerHand.size() + " cards remaining");
+				System.out.println("The enemy has " + w.enemyHand.size() + " cards remaining");
+				//System.out.println(w.getWinner());
+			}
+			else if (i == 2){
+				System.out.println(w.drawFromPlayerHand());
+				System.out.println(w.drawFromEnemyHand());
+				w.compareHands();
+				System.out.println("The player has "  + w.playerHand.size() + " cards remaining");
+				System.out.println("The enemy has " + w.enemyHand.size() + " cards remaining");
+			}
+			else if (i == 3){
+				System.out.println(w.drawFromPlayerHand());
+				System.out.println(w.drawFromEnemyHand());
+				w.compareHands();
+				System.out.println("The player has "  + w.playerHand.size() + " cards remaining");
+				System.out.println("The enemy has " + w.enemyHand.size() + " cards remaining");
+			}
+			else if (i == 4){
+				System.out.println(w.drawFromPlayerHand());
+				System.out.println(w.drawFromEnemyHand());
+				w.compareHands();
+				System.out.println("The player has "  + w.playerHand.size() + " cards remaining");
+				System.out.println("The enemy has " + w.enemyHand.size() + " cards remaining");
+			}
+			if (i == maxTurns){
+				System.out.println(w.getWinner());
+			}
+		}
+		
 	}
 		
 }
